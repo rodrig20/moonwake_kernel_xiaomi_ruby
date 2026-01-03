@@ -12,12 +12,17 @@ Redmi Note 12 pro 5G (ruby) kernel specify for powersave
 - ln8000 fast charge driver enabled
 - Updated wireguard module
 - Use google clang 19 (r530567)
+- **Custom modification**: USB gadget reconfiguration to allow using the device as HID and MSD for ISO booting
+
+## About this adaptation
+
+This is an adaptation of the original [DPR-MoonWake/moonwake_kernel_xiaomi_ruby](https://github.com/DPR-MoonWake/moonwake_kernel_xiaomi_ruby) kernel with additional functionality to support using the device as a HID (Human Interface Device) and MSD (Mass Storage Device) for booting ISO images. The USB gadget reconfiguration feature allows properly unregistering the current gadget before setting up a new configuration, enabling flexible USB device mode switching.
 
 ## Compile guide
 
 ### Option 1: Compile and go (This way to compile my kernel directly from my source)
 
-1. Fork [DPR-MoonWake/KernelAction](https://github.com/DPR-MoonWake/KernelAction) repo
+1. Fork [rodrig20/KernelAction_moonwake_kernel_xiaomi_ruby](https://github.com/rodrig20/KernelAction_moonwake_kernel_xiaomi_ruby/) repo
 2. Enable action build in Actions tab
 3. Click on `Build MoonWake Kernel`
 4. Click on `Run workflow`
@@ -26,7 +31,7 @@ Redmi Note 12 pro 5G (ruby) kernel specify for powersave
 7. Click `Run workflow` green button and wait
 8. Download, extract the build and flash!
 
-If you don't know how to flash, [read this wiki!](https://github.com/DPR-MoonWake/moonwake_kernel_xiaomi_ruby/wiki) or join <https://t.me/RedmiNote12ProPlusCommunity> to ask me (@RainyXeon)!
+If you don't know how to flash, [read the original project's excellent wiki!](https://github.com/DPR-MoonWake/moonwake_kernel_xiaomi_ruby/wiki) For additional help, join Android development communities for assistance with the flashing process.
 
 ### Option 2: Kernel Player (For advanced user that build android kernel before)
 
