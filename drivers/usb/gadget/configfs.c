@@ -340,8 +340,8 @@ static ssize_t gadget_dev_desc_UDC_store(struct config_item *item,
 		kfree(name);
 	} else {
 		if (gi->composite.gadget_driver.udc_name) {
-			ret = -EBUSY;
-			goto err;
+			// Instead of returning -EBUSY, disable the current gadget
+			unregister_gadget(gi);
 		}
 		gi->composite.gadget_driver.udc_name = name;
 		ret = usb_gadget_probe_driver(&gi->composite.gadget_driver);
