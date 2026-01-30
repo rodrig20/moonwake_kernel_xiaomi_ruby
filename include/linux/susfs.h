@@ -56,7 +56,7 @@ struct st_susfs_sus_mount {
 	int                                     err;
 };
 
-struct st_susfs_hide_sus_mnts_for_all_procs {
+struct st_susfs_hide_sus_mnts_for_non_su_procs {
 	bool                                    enabled;
 	int                                     err;
 };
@@ -92,20 +92,6 @@ struct st_susfs_sus_kstat_hlist {
 	unsigned long                           target_ino;
 	struct st_susfs_sus_kstat               info;
 	struct hlist_node                       node;
-};
-#endif
-
-/* try_umount */
-#ifdef CONFIG_KSU_SUSFS_TRY_UMOUNT
-struct st_susfs_try_umount {
-	char                                    target_pathname[SUSFS_MAX_LEN_PATHNAME];
-	int                                     mnt_mode;
-	int                                     err;
-};
-
-struct st_susfs_try_umount_list {
-	struct list_head                        list;
-	struct st_susfs_try_umount              info;
 };
 #endif
 
@@ -195,7 +181,7 @@ void susfs_add_sus_path_loop(void __user **user_info);
 /* sus_mount */
 #ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
 void susfs_add_sus_mount(void __user **user_info);
-void susfs_set_hide_sus_mnts_for_all_procs(void __user **user_info);
+void susfs_set_hide_sus_mnts_for_non_su_procs(void __user **user_info);
 void susfs_set_umount_for_zygote_iso_service(void __user **user_info);
 #endif // #ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
 
